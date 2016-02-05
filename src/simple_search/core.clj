@@ -35,12 +35,12 @@
 ;;; generates weighted proportions of 0's and 1's.
 
 (defn score
-  "Takes the total-weight of the given answer unless it's over capacity,
-   in which case we return 0."
+  "Returns the total value if the total-weight of the given answer is within capacity,
+   otherwise returns the negative of the weight."
   [answer]
   (if (> (:total-weight answer)
          (:capacity (:instance answer)))
-    0
+    (* (:total-weight answer) -1)
     (:total-value answer)))
 
 (defn add-score
@@ -55,5 +55,12 @@
          (map add-score
               (repeatedly max-tries #(random-answer instance)))))
 
-(time (random-search knapPI_16_20_1000_1 1000000
+;(defn toggle-1-item
+;  [answer index]
+;  (if (= 0 (nth (:choices answer) index))
+;    ()
+;    ())
+
+
+(time (random-search knapPI_16_20_1000_1 100
 ))
