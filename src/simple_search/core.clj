@@ -56,6 +56,7 @@
               (repeatedly max-tries #(random-answer instance)))))
 
 (defn toggle-1-item
+  "changes a value in :choices either from 0 to 1 or 1 to 0 to add or remove an item, then updates weight, value, and score"
   [answer index]
   (let [add-factor (if (= 0 (nth (:choices answer) index)) 1 -1)
         new-list (if (= -1 add-factor)
