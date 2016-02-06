@@ -70,7 +70,15 @@
                                                :total-value new-total-value)]
     (add-score new-answer-without-score)))
 
+(defn hill-climb
+  [answer tweak-fn number-of-iterations]
+  (loop [current-best 0
+         loops number-of-iterations]
+    (if (= 0 number-of-iterations)
+      current-best
+      (recur (+ current-best 1) (- number-of-iterations 1)))))
 
+(hill-climb 0 0 2)
 
 (time (random-search knapPI_16_20_1000_1 100
 ))
