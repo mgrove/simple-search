@@ -15,3 +15,7 @@ if a knapsack is over-capacity, then the hill climbing behavior will likely caus
 One example when this tweak function may not perform well would be when the optimal solution would be a single large and
 valuable item. Our tweaking function would not be likely to remove all the smaller items necessary to make space for
 the large valuable item. Additionally, using random restarts is still unlikely to find this optimal solution.
+## Results
+| Problem | Random Search Trial 1 | RS Trial 2 | RS Trial 3 | Hill Climbing Trial 1 | HC Trial 2 | HC Trial 3 |
+| ------- | ---------------------:|-----------:| ----------:| ---------------------:| ----------:| ----------:|
+| knapPI_16_20_1000_1 | 2239 | 2185 | 2185 | 1268 | 1572 | 3006 |
