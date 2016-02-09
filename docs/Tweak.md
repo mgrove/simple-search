@@ -16,6 +16,14 @@ One example when this tweak function may not perform well would be when the opti
 valuable item. Our tweaking function would not be likely to remove all the smaller items necessary to make space for
 the large valuable item. Additionally, using random restarts is still unlikely to find this optimal solution.
 ## Results
+Note: Random Search and Hill Climbing were ran with 100,000 iterations, and Random Restart used 1000 restarts with 100 iterations (climbing steps) each.
+
 | Problem | Random Search Trial 1 | RS Trial 2 | RS Trial 3 | Hill Climbing Trial 1 | HC Trial 2 | HC Trial 3 |
 | ------- | ---------------------:|-----------:| ----------:| ---------------------:| ----------:| ----------:|
+| knapPI_11_20_1000_1 | 1428 | 1326 | 1326 | 1428 | -614 | 2130 |
+| same with random restart | N/A | N/A | N/A | 3655 | 3821 | 4108 |
+| knapPI_13_20_1000_1 | 1599 | 1638 | 1560 | 1209 | 936 | 1287 |
+| same with random restart | N/A | N/A | N/A | 2106 | 1950 | 1872 |
 | knapPI_16_20_1000_1 | 2239 | 2185 | 2185 | 1268 | 1572 | 3006 |
+| same with random restart | N/A | N/A | N/A | 4067 | 4591 | 4539 |
+
