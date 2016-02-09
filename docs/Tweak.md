@@ -20,10 +20,10 @@ Note: Random Search and Hill Climbing were ran with 100,000 iterations, and Rand
 
 | Problem | Random Search Trial 1 | RS Trial 2 | RS Trial 3 | Hill Climbing Trial 1 | HC Trial 2 | HC Trial 3 |
 | ------- | ---------------------:|-----------:| ----------:| ---------------------:| ----------:| ----------:|
-| knapPI_11_20_1000_1 | 1428 | 1326 | 1326 | 1428 | -614 | 2130 |
-| same with random restart | N/A | N/A | N/A | 3655 | 3821 | 4108 |
-| knapPI_13_20_1000_1 | 1599 | 1638 | 1560 | 1209 | 936 | 1287 |
-| same with random restart | N/A | N/A | N/A | 2106 | 1950 | 1872 |
-| knapPI_16_20_1000_1 | 2239 | 2185 | 2185 | 1268 | 1572 | 3006 |
-| same with random restart | N/A | N/A | N/A | 4067 | 4591 | 4539 |
+| knapPI_11_20_1000_1 | 1428 | 1326 | 1326 | 790 | 624 | 790 |
+| same with random restart | N/A | N/A | N/A | 1428 | 1428 | 1428 |
+| knapPI_13_20_1000_1 | 1599 | 1638 | 1560 | 1482 | 1287 | 1365 |
+| same with random restart | N/A | N/A | N/A | 1716 | 1716 | 1716 |
+| knapPI_16_20_1000_1 | 2239 | 2185 | 2185 | 1152 | 2093 | 1831 |
+| same with random restart | N/A | N/A | N/A | 2291 | 2291 | 2291 |
 
