@@ -70,6 +70,8 @@
                                                :total-value new-total-value)]
     (add-score new-answer-without-score)))
 
+
+
 (defn hill-climb
   [answer tweak-fn number-of-iterations]
   (loop [current-best answer
@@ -80,6 +82,12 @@
             better-answer (max-key :score current-best tweaked-answer)]
       (recur better-answer (dec loops))))))
 
+
+(defn hill-climb-with-instance
+  [tweak-fn instance number-of-iterations]
+  (hill-climb (random-answer instance) tweak-fn number-of-iterations)
+  )
+
 (defn random-restart
   [tweak-fn number-of-iterations number-of-restarts instance]
   (loop [current-best (hill-climb (add-score (random-answer instance)) tweak-fn number-of-iterations)
@@ -89,6 +97,11 @@
       (let [next-climb (hill-climb (add-score (random-answer instance)) tweak-fn number-of-iterations)
             better-climb (max-key :score current-best next-climb)]
       (recur better-climb (dec loops))))))
+
+(defn random-restart-reordered
+  [tweak-fn number-of-restarts instance number-of-iterations]
+  (random-restart tweak-fn number-of-iterations number-of-restarts instance)
+  )
 
 ; Score is -2436
 (def test-answer {:instance {:capacity 994, :items '({:value 403N, :weight 94N} {:value 886N, :weight 506N} {:value 814N, :weight 416N} {:value 1151N, :weight 992N} {:value 983N, :weight 649N} {:value 629N, :weight 237N} {:value 848N, :weight 457N} {:value 1074N, :weight 815N} {:value 839N, :weight 446N} {:value 819N, :weight 422N} {:value 1062N, :weight 791N} {:value 762N, :weight 359N} {:value 994N, :weight 667N} {:value 950N, :weight 598N} {:value 111N, :weight 7N} {:value 914N, :weight 544N} {:value 737N, :weight 334N} {:value 1049N, :weight 766N} {:value 1152N, :weight 994N} {:value 1110N, :weight 893N})}, :choices '(0 1 0 0 0 1 0 0 0 0 0 0 1 1 0 0 1 0 0 0), :total-weight 2436N, :total-value 4599N, :score -2436N}
