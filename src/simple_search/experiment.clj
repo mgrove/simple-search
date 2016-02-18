@@ -5,7 +5,8 @@
         simple-search.knapsack-examples.knapPI_16_20_1000
         simple-search.knapsack-examples.knapPI_11_200_1000
         simple-search.knapsack-examples.knapPI_13_200_1000
-        simple-search.knapsack-examples.knapPI_16_200_1000))
+        simple-search.knapsack-examples.knapPI_16_200_1000
+        simple-search.knapsack-examples.knapPI_16_1000_1000))
 
 (defn run-experiment
   [searchers problems num-replications max-evals]
@@ -59,13 +60,12 @@
                       (partial core/hill-climb-with-instance core/toggle-1-item)
                       {:label "hill_climb"})
                     (with-meta
-                      (partial core/random-restart-reordered core/toggle-1-item 3)
+                      (partial core/random-restart-reordered core/toggle-1-item 10)
                       {:label "random_restart"})
                     (with-meta (partial core/random-search)
                       {:label "random_search"})]
                    (map get-labelled-problem
-                        ["knapPI_11_20_1000_4" "knapPI_13_20_1000_4" "knapPI_16_20_1000_4"
-                         "knapPI_11_200_1000_4" "knapPI_13_200_1000_4" "knapPI_16_200_1000_4"])
+                        ["knapPI_11_20_1000_4" "knapPI_13_200_1000_4" "knapPI_16_1000_1000_3"])
                    (Integer/parseInt num-repetitions)
                    (Integer/parseInt max-answers)))
   (shutdown-agents))
