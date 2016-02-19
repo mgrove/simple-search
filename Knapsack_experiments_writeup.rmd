@@ -1,0 +1,36 @@
+---
+title: "Knapsack Experiments"
+author: "Molly Grove and Aaron Lemmon"
+date: "February 19, 2016"
+output: html_document
+---
+
+```{r}
+data_30_runs <- read.csv("knapsackproblem1000.txt", sep="")
+
+data_30_runs$Non_negative_score = ifelse(data_30_runs$Score<0, 0, data_30_runs$Score)
+
+plot(data_30_runs$Non_negative_score ~ data_30_runs$Search_method,
+     xlab="Searcher", ylab="Score")
+
+library("ggplot2")
+
+ggplot(data_30_runs, 
+       aes(x=factor(Max_evals), y=Non_negative_score, group=Max_evals)) + 
+  geom_boxplot() + facet_grid(Problem ~ Search_method)
+
+pairwise.wilcox.test(data_30_runs$Non_negative_score, data_30_runs$Search_method)
+
+plot(data_30_runs$Non_negative_score ~ data_30_runs$Problem,
+     xlab="Problem", ylab="Score")
+
+library("rpart")
+library("rpart.plot")
+
+rp <- rpart(Non_negative_score ~ Search_method + Problem + Max_evals, data=data_30_runs)
+rp
+rpart.plot(rp, type=3, extra=100)
+
+```
+
+knapPI_11_20_1000_4 = subset(data_30_runs, Problem=="knapPI_11_20_1000_4")
