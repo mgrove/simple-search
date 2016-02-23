@@ -103,8 +103,9 @@ plot(data_30_runs$Non_negative_score ~ data_30_runs$Problem,
 
 For this plot, all negative values were converted to 0. Additionally, this plot only shows the scores from the runs with 1,000 iterations. This plot shows that there was a small spread of positive scores for the first problem, a large spread of scores (with a median of 0) for the second problem, and only scores of 0 for the third problem.
 
-## WHAT IS THIS THING
+## Recursive Partitioning
 
+Below is the `rpart` tree for our data from all problems and search methods, with 1,000 total steps. 
 ```{r}
 library("rpart")
 library("rpart.plot")
@@ -114,4 +115,9 @@ rp
 rpart.plot(rp, type=3, extra=100)
 ```
 
-PUT EXPLANATION HERE
+The third problem is separated out right away, indicating that the data for that problem was significantly different. Aside from the third problem, the tree suggests that the most significant difference is between hill_climb and the other search methods. This is probably because hill_climb did much better than the other two search methods for the second problem. 
+
+## Conclusions
+Our results varied widely between problems. For the first problem, random_restart was the best search method, with hill_climb and random_search giving similar scores. For the second problem, hill_climb was the only method that gave any positive scores, with random_restart performing better than random_search. Initially, the third problem gave only negative scores for all search methods. This caused us to re-run the third problem with 10,000 total steps. This gave much better scores. Although only hill_climb gave positive scores, random_restart still performed significantly better than random_search. 
+
+We think what happened with the third problem was that the first time, the algorithm simply did not have enough steps to become positive. Each step adds or removes one element and compares the scores of the new and old answers. This does not change when the score is negative, so when the algorithm tries adding an element and the score is negative, that step is basically wasted. This could have also been what happened in the second problem. The random_restart search method did not do as well as hill_climb in this case because each hill climb within random_restart only had 1/10 of the number of steps of the hill_climb search method, since the steps in random_restart were divided by 10. 
