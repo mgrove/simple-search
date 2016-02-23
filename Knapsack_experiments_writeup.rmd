@@ -2,7 +2,7 @@
 title: "Knapsack Experiments"
 author: "Molly Grove and Aaron Lemmon"
 date: "February 19, 2016"
-output: html_document
+output: pdf_document
 ---
 # Introduction
 
